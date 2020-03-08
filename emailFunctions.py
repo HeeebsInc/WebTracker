@@ -8,8 +8,8 @@ import re
 
 
 org_email = '@gmail.com'
-from_email = 'LilyScraper@gmail.com'
-from_pwd = 'Lilyscraper555!'
+from_email = 'YourEmail@gmail.com'
+from_pwd = 'YourPassword!'
 smtp_server = 'imap.gmail.com'
 smtp_port = 993
 
