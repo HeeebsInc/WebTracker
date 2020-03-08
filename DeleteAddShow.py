@@ -11,7 +11,7 @@ fieldnames = ['Name', 'Url']
 
 def website_adder(web_name, dir_name, url):
     web_name = web_name.upper()
-    website_list = pd.read_csv(f'Data/{dir_name}/WebsiteList.csv')
+    website_list = pd.read_csv(f'WebsiteList.csv')
     url_array = pd.array(website_list['Url'])
     name_array = pd.array(website_list['Name'])
 
@@ -50,9 +50,9 @@ def website_adder(web_name, dir_name, url):
             string_df = pd.DataFrame(word_counts)
             indexed_df = string_df.transpose()
 
-            indexed_df.to_csv(f'Data/{dir_name}/{web_name}.csv', index_label=['Word', 'Count'], line_terminator='\n')
+            indexed_df.to_csv(f'{web_name}.csv', index_label=['Word', 'Count'], line_terminator='\n')
 
-            with open(f'Data/{dir_name}/WebsiteList.csv', 'a') as website_index:
+            with open(f'WebsiteList.csv', 'a') as website_index:
                 csv_writer = csv.DictWriter(website_index, fieldnames=fieldnames, lineterminator='\n')
                 info = {
                     'Name': web_name,
@@ -94,9 +94,9 @@ def website_deleter(name, dir_name):
         website_df = pd.DataFrame(website_dictionary)
         website_indexed = website_df.transpose()
 
-        website_indexed.to_csv(f'Data/{dir_name}/WebsiteList.csv', line_terminator='\n', index=False,
+        website_indexed.to_csv(f'WebsiteList.csv', line_terminator='\n', index=False,
                                index_label=['Name', 'Url', 'Position'])
-        os.remove(f'Data/{dir_name}/{name}.csv')
+        os.remove(f'{name}.csv')
         message = f'Successfully deleted\t{name}\t{url}'
         return (0, message, website_indexed)
     except:
