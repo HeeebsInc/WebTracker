@@ -8,8 +8,8 @@ import re
 
 
 org_email = '@gmail.com'
-from_email = 'LilyScraper@gmail.com'
-from_pwd = 'Lilyscraper555!'
+from_email = 'YourEmail@gmail.com'
+from_pwd = 'YourPassword!'
 smtp_server = 'imap.gmail.com'
 smtp_port = 993
 
@@ -48,7 +48,7 @@ def add_delete_website():
 
 
                         if email_subject[0].lower() == 'add':  #add website to list
-                            mail.store(i, '+FLAGS', '\\Deleted')
+                            mail.store(i, '+FLAGS', '\\Deleted')    #delete message so it doesnt show up again
                             web_name = email_subject[1]
                             regex = re.compile('[^A-Za-z0-9]')
                             web_name = regex.sub('', web_name)
@@ -85,7 +85,7 @@ def add_delete_website():
 
 
     except Exception as e:
-        raise
+        
         error = str(e)
         return f'An Error Occurred: \n{error}'
 
